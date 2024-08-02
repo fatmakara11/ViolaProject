@@ -6,7 +6,7 @@ namespace ViolaProject_Api.Dtos.ProductRepository
     public interface ProductDepo
     {
         Task<List<UrunSonuc>> GetAllProductAsync();
-        Task<List<UrunveKategoriSonuc>> GetUrunveKategoriSonucAsync();
+        Task<List<UrunveKategoriSonuc>> GetUrunveKategoriSonucAsync(string where);
 
 
 

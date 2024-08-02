@@ -1,4 +1,5 @@
-﻿<!-- BestsellerCategories Section Begin -->
+﻿@* @model List<ViolaProject_UI.Dtos.BestsellerDtos.ResaultBestsellerDtos> *@
+<!-- BestsellerCategories Section Begin -->
 <section class="categories">
 
     <div class="container">
@@ -7,8 +8,9 @@
         </div>
 
         <div class="row">
-            <div class="categories__slider owl-carousel">
-
+          <div class="categories__slider owl-carousel">
+@*              @foreach (var item in Model)
+            { *@
                 <div class="col-lg-3">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-5.jpg">
@@ -24,7 +26,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-3">
+             }
+        <div class="col-lg-3">
                     <div class="featured__item">
                         <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-7.jpg">
                             <ul class="featured__item__pic__hover">
@@ -98,7 +101,7 @@
                             <h5>₺20.00</h5>
                         </div>
                     </div>
-                </div>
+                </div> 
 
             </div>
         </div>

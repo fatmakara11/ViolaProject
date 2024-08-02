@@ -30,12 +30,25 @@ namespace ViolaProject_Api.Controllers
         public async Task<IActionResult> ProductListWithCategory()
         {
             // Tüm ürünleri asenkron olarak getirir.
-            var values = await _productDepo2.GetUrunveKategoriSonucAsync();
+            var values = await _productDepo2.GetUrunveKategoriSonucAsync("");
 
             // ürünleri başarılı bir şekilde döner.
             return Ok(values);
         }
+        [HttpGet]
+        [Route("ProductListWithCategoryID/{CategoryID}")]
+        public async Task<IActionResult> ProductListWithCategoryID(int CategoryID)
+        {
+            // Tüm ürünleri asenkron olarak getirir.
+            // Category Id 0 a eşit değilse where e category id i ekle
+            string where = "";
+            if (CategoryID != 0)
+                where = $"CategoryID={CategoryID}";
+            var values = await _productDepo2.GetUrunveKategoriSonucAsync(where);
 
+            // ürünleri başarılı bir şekilde döner.
+            return Ok(values);
+        }
 
     }
 }

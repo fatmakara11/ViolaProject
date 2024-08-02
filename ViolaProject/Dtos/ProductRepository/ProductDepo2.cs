@@ -28,11 +28,13 @@ namespace ViolaProject_Api.Dtos.ProductRepository
             }
         }
 
-        public async Task<List<UrunveKategoriSonuc>> GetUrunveKategoriSonucAsync()
+        public async Task<List<UrunveKategoriSonuc>> GetUrunveKategoriSonucAsync(string where)
         {
             // ürünlerin kategorisini getirmek için kullanılacak SQL sorgusu.
-            string query = "SELECT ProductID,ProductTitle,Price,CategoryName From Product inner join Category on Product.ProductCategory=Category.CategoryID";
-
+            string query = "SELECT ProductID,CategoryID,ProductTitle,Price,CategoryName,CoverImage From Product inner join Category on Product.ProductCategory=Category.CategoryID";
+            if (!String.IsNullOrEmpty(where)) {
+                query += " where " + where;
+            }
             // Veritabanı bağlantısı oluşturulur ve sorgu çalıştırılır.
             using (var connection = _context.CreateConnection())
             {

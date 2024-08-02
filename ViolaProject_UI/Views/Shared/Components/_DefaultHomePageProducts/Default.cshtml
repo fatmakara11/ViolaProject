@@ -1,4 +1,6 @@
-﻿<!-- HomePage Products Section Begin -->
+﻿@*@model List<ViolaProject_UI.Dtos.ProductDtos.ResaultProductDtos>  *@
+
+<!-- HomePage Products Section Begin -->
 <section class="featured spad">
     <div class="container">
         <div class="row">
@@ -8,137 +10,161 @@
                 </div>
                 <div class="featured__controls">
                     <ul>
-                        <li class="active" data-filter="*">Tümü</li>
-                        <li data-filter=".oranges">Meyve</li>
-                        <li data-filter=".fresh-meat">Sebze</li>
-                        <li data-filter=".vegetables">Organik Yiyecekler</li>
-                        <li data-filter=".fastfood">Fastfood</li>
+                        <li onclick="GetList(0)" class="active">Tümü</li>
+                        <li onclick="GetList(1)">Meyve</li>
+                        <li onclick="GetList(2)">Sebze</li>
+                        <li>Organik Yiyecekler</li>
+                        <li>Fastfood</li>
                     </ul>
                 </div>
             </div>
         </div>
+        <div id="Div_Products"></div>
+        @* @await Component.InvokeAsync("_DefaultHomePageFilters", new { catId = 1 }) *@
+        @*
         <div class="row featured__filter">
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-1.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Elma</a></h6>
-                        <h5>₺25.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-2.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Yumurta</a></h6>
-                        <h5>₺15.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-3.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Havuç</a></h6>
-                        <h5>₺20.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-4.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Reçel</a></h6>
-                        <h5>₺35.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-5.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Süt</a></h6>
-                        <h5>₺12.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-6.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Meyve Suyu</a></h6>
-                        <h5>₺18.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-7.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Peynir</a></h6>
-                        <h5>₺45.00</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
-                <div class="featured__item">
-                    <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-8.jpg">
-                        <ul class="featured__item__pic__hover">
-                            <li><a href="#"><i class="fa fa-heart"></i></a></li>
-                            <li><a href="#"><i class="fa fa-retweet"></i></a></li>
-                            <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
-                        </ul>
-                    </div>
-                    <div class="featured__item__text">
-                        <h6><a href="#">Hamburger</a></h6>
-                        <h5>₺50.00</h5>
-                    </div>
-                </div>
-            </div>
+        @foreach (var item in Model)
+        {
+        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-1.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
         </div>
+        <div class="featured__item__text">
+        <h6><a href="#">@item.productTitle</a></h6>
+        <h5>₺ @item.price</h5>
+        </div>
+        </div>
+        </div>
+        //  @await Component.InvokeAsync("_DefaultHomePageProductsByCategory", new { CategoryID = 5 })
+        }
+        <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fastfood">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-2.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">Yumurta</a></h6>
+        <h5>₺15.00</h5>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix vegetables fresh-meat">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-3.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">Havuç</a></h6>
+        <h5>₺20.00</h5>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood oranges">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-4.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">Reçel</a></h6>
+        <h5>₺35.00</h5>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-5.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">Süt</a></h6>
+        <h5>₺12.00</h5>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fastfood">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-6.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">Meyve Suyu</a></h6>
+        <h5>₺18.00</h5>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fresh-meat vegetables">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-7.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">Peynir</a></h6>
+        <h5>₺45.00</h5>
+        </div>
+        </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6 mix fastfood vegetables">
+        <div class="featured__item">
+        <div class="featured__item__pic set-bg" data-setbg="/ogani-master/img/featured/feature-8.jpg">
+        <ul class="featured__item__pic__hover">
+        <li><a href="#"><i class="fa fa-heart"></i></a></li>
+        <li><a href="#"><i class="fa fa-retweet"></i></a></li>
+        <li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>
+        </ul>
+        </div>
+        <div class="featured__item__text">
+        <h6><a href="#">Hamburger</a></h6>
+        <h5>₺50.00</h5>
+        </div>
+        </div>
+        </div>
+        *@
+    </div>
     </div>
 </section>
 <!-- HomePage Products Section End -->
+<script src="~/ogani-master/js/jquery-3.3.1.min.js"></script>
+<script>
+    $(document).ready(function () {
+        GetList(0);
+    });
+    function GetList(catId) {
+        $.post("/Default/GetFilterList", { catId: catId },
+            function (data, textstatus, jqxhr) {
+                $("#Div_Products").empty().append(data);
+            }
+        );
+    }
+    // function deneme() {
+    //     console.log("deneme");
+    // }
+</script>
