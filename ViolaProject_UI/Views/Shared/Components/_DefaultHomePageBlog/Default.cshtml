@@ -1,4 +1,7 @@
-﻿<!-- Blog Section Begin -->
+﻿@{
+    var blogs = ViewBag.Blogs as List<ViolaProject_UI.Dtos.BlogDtos.ResaultBlogDtos>;
+}
+
 <section class="from-blog spad">
     <div class="container">
         <div class="row">
@@ -9,56 +12,31 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="/ogani-master/img/blog/blog-1.jpg" alt="">
+            @if (blogs != null && blogs.Count > 0)
+            {
+                foreach (var blog in blogs)
+                {
+                    <div class="col-lg-4 col-md-4 col-sm-6">
+                        <div class="blog__item">
+                            <div class="blog__item__pic">
+                                <img src="@blog.GoruntuUrl" alt="@blog.Baslik">
+                            </div>
+                            <div class="blog__item__text">
+                                <ul>
+                                    <li><i class="fa fa-calendar-o"></i> @blog.Tarih.ToString("dd MMMM yyyy")</li>
+                                    <li><i class="fa fa-comment-o"></i> 5</li>
+                                </ul>
+                                <h5><a href="#">@blog.Baslik</a></h5>
+                                <p>@blog.KisaYazi</p>
+                            </div>
+                        </div>
                     </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> 22 Temmuz 2024</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">Meyve ve sebze saklama ipuçları</a></h5>
-                        <p>Meyve ve sebzeleri nasıl taze tutabileceğinizi öğrenin.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <!--BURADA BLOGLARA YÖNLENDİRME YAPILACAK-->
-                        <a href="#blog-detail.html">
-                            <img src="/ogani-master/img/blog/blog-2.jpg" alt="">
-                        </a>
-                       
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> 26 Temmuz 2024</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">30 kişilik kahvaltı nasıl hazırlanır?</a></h5>
-                        <p>Kalabalık kahvaltılar için pratik ve lezzetli tarifler.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-6">
-                <div class="blog__item">
-                    <div class="blog__item__pic">
-                        <img src="/ogani-master/img/blog/blog-3.jpg" alt="">
-                    </div>
-                    <div class="blog__item__text">
-                        <ul>
-                            <li><i class="fa fa-calendar-o"></i> 28 Temmuz 2024</li>
-                            <li><i class="fa fa-comment-o"></i> 5</li>
-                        </ul>
-                        <h5><a href="#">Türkiye'deki temiz çiftlikleri ziyaret edin</a></h5>
-                        <p>Türkiye'deki organik ve temiz çiftlikleri keşfedin.</p>
-                    </div>
-                </div>
-            </div>
+                }
+            }
+            else
+            {
+                <p>Henüz blog bulunmamaktadır.</p>
+            }
         </div>
     </div>
 </section>
-<!-- Blog Section End -->

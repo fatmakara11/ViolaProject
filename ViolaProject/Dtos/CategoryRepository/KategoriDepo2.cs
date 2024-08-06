@@ -38,7 +38,7 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
         public async void KategoriSil(int id)
         {
             // Kategori silmek için kullanılacak SQL sorgusu.
-            string query = "DELETE From Category Where CategoryID=@categoryID)";
+            string query = "DELETE From Category Where CategoryID=@categoryID";
 
             // Sorgu için parametreleri belirler.
             var parametres = new DynamicParameters();

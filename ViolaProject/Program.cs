@@ -1,3 +1,4 @@
+using ViolaProject_Api.Dtos.BlogRepository;
 using ViolaProject_Api.Dtos.CategoryRepository;
 using ViolaProject_Api.Dtos.ProductRepository;
 using ViolaProject_Api.Models.DapperContext;
@@ -8,6 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<Context>();
 builder.Services.AddTransient<KategoriDepo,KategoriDepo2>();
 builder.Services.AddTransient<ProductDepo, ProductDepo2>();
+builder.Services.AddTransient<IBlogRepository, BlogRepository>();
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
