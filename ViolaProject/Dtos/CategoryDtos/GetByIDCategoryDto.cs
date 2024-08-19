@@ -1,6 +1,6 @@
 ﻿namespace ViolaProject_Api.Dtos.CategoryDtos
 {
-    public class GetByIDKategori
+    public class GetByIDCategoryDto
     {
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }

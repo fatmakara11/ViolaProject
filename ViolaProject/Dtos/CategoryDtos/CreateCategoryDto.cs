@@ -1,6 +1,6 @@
 ﻿namespace ViolaProject_Api.Dtos.CategoryDtos
 {
-    public class KategoriOlustur
+    public class CreateCategoryDto
     {
         public string CategoryName { get; set; }
     }

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using ViolaProject_UI.Dtos.BestsellerDtos;
+using ViolaProject_UI.Dtos.ProductDtos;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -24,7 +24,7 @@ namespace ViolaProject_UI.ViewComponents.HomePage
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResaultBestsellerDtos>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResaultProductDto>>(jsonData);
                 return View(values);
             }
 

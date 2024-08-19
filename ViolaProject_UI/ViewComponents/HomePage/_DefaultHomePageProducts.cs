@@ -23,7 +23,7 @@ namespace ViolaProject_UI.ViewComponents.HomePage
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData=await responseMessage.Content.ReadAsStringAsync();
-                var values=JsonConvert.DeserializeObject<List<ResaultProductDtos>>(jsonData);
+                var values=JsonConvert.DeserializeObject<List<ResaultProductDto>>(jsonData);
                 return View(values);
             }
 

@@ -8,13 +8,13 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
     public interface KategoriDepo
     {
         // Tüm kategorileri asenkron olarak getirir.
-        Task<List<KaregoriSonuc>> GetAllCategoryAsync();
+        Task<List<ResaultCategoryDto>> GetAllCategoryAsync();
 
         // Yeni bir kategori oluşturur.
-        void KategoriOlustur(KategoriOlustur kategori);
-        void KategoriSil(int id);
-        void KategoriGüncelleme(KategoriGüncelleme kategori);
-        Task<GetByIDKategori> GetCategory(int id);
+        void CreateCategory(CreateCategoryDto category);
+        void DeleteCategory(int id);
+        void UpdateCategory(UpdateCategoryDto category);
+        Task<GetByIDCategoryDto> GetCategory(int id);
         
     }
 }

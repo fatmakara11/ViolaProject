@@ -1,6 +1,8 @@
-﻿namespace ViolaProject_Api.Dtos.CategoryDtos
+﻿using System.Diagnostics;
+
+namespace ViolaProject_UI.Dtos.CategoryDtos
 {
-    public class KategoriGüncelleme
+    public class ResaultCategoryDtos
     {
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }

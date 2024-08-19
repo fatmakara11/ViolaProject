@@ -28,7 +28,7 @@ namespace ViolaProject_UI.Controllers
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
-                var values = JsonConvert.DeserializeObject<List<ResaultProductDtos>>(jsonData);
+                var values = JsonConvert.DeserializeObject<List<ResaultProductDto>>(jsonData);
                 return PartialView("~/Views/Shared/Components/_DefaultHomePageFilters/Default.cshtml",values);
             }
             else {

@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-
-namespace ViolaProject_Api.Dtos.CategoryDtos
+﻿namespace ViolaProject_UI.Dtos.CategoryDtos
 {
-    public class KaregoriSonuc
+    public class UpdateCategoryDtos
     {
         public int CategoryID { get; set; }
         public string CategoryName { get; set; }

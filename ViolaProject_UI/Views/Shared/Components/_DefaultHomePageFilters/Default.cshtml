@@ -1,14 +1,14 @@
-﻿@model List<ViolaProject_UI.Dtos.ProductDtos.ResaultProductDtos>
+﻿@model List<ViolaProject_UI.Dtos.ProductDtos.ResaultProductDto>
 @{
     string formattedLink = "";
 }
 <div class="row featured__filter">
     @foreach (var item in Model)
     {
-        formattedLink = @item.coverImage.Replace("~","");
+        formattedLink = @item.CoverImage.Replace("~","");
         <div class="col-lg-3 col-md-4 col-sm-6 mix oranges fresh-meat">
             <div class="featured__item">
-                <div class="featured__item__pic set-bg" data-setbg="@item.coverImage" style="background-image: url('@formattedLink');">
+                <div class="featured__item__pic set-bg" data-setbg="@item.CoverImage" style="background-image: url('@formattedLink');">
                     <ul class="featured__item__pic__hover">
                         <li><a href="#"><i class="fa fa-heart"></i></a></li>
                         <li><a href="#"><i class="fa fa-retweet"></i></a></li>
@@ -16,8 +16,8 @@
                     </ul>
                 </div>
                 <div class="featured__item__text">
-                    <h6><a href="#">@item.productTitle</a></h6>
-                    <h5>₺ @item.price</h5>
+                    <h6><a href="#">@item.ProductTitle</a></h6>
+                    <h5>₺ @item.Price</h5>
                 </div>
             </div>
         </div>

@@ -18,15 +18,15 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
         }
 
         // KategoriOlustur metodu, yeni bir kategori oluşturur.
-        public async void KategoriOlustur(KategoriOlustur kategori)
+        public async void CreateCategory(CreateCategoryDto category)
         {
             // Kategori eklemek için kullanılacak SQL sorgusu.
-            string query = "INSERT INTO Category (CategoryName, CategoryStatus) VALUES (@categoryName, @categoryStatus)";
+            string query = "INSERT INTO Category (CategoryName, CategoryStarus) VALUES (@categoryName, @categoryStarus)";
 
             // Sorgu için parametreleri belirler.
             var parametres = new DynamicParameters();
-            parametres.Add("@categoryName", kategori.CategoryName);
-            parametres.Add("@categoryStatus", true);
+            parametres.Add("@categoryName", category.CategoryName);
+            parametres.Add("@categoryStarus", true);
 
             // Veritabanı bağlantısı oluşturulur ve sorgu çalıştırılır.
             using (var connection = _context.CreateConnection())
@@ -35,7 +35,7 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
             }
         }
         // Kategorisil metodu, kategoriyi siler.
-        public async void KategoriSil(int id)
+        public async void DeleteCategory(int id)
         {
             // Kategori silmek için kullanılacak SQL sorgusu.
             string query = "DELETE From Category Where CategoryID=@categoryID";
@@ -51,20 +51,20 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
             }
         }
         // KategoriGüncelleme metodu, kategoriyi günceller.
-        public async void KategoriGüncelleme(KategoriGüncelleme kategori)
+        public async void UpdateCategory(UpdateCategoryDto category)
         {
-            if (kategori == null)
+            if (category == null)
             {
-                throw new ArgumentNullException(nameof(kategori), "Kategori nesnesi null olamaz.");
+                throw new ArgumentNullException(nameof(category), "Kategori nesnesi null olamaz.");
             }
             // Kategori güncellemek için kullanılacak SQL sorgusu.
-            string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus where CategoryID=@categoryID";
+            string query = "Update Category Set CategoryName=@categoryName,CategoryStarus=@categoryStarus where CategoryID=@categoryID";
 
             // Sorgu için parametreleri belirler.
             var parametres = new DynamicParameters();
-            parametres.Add("@categoryName", kategori.CategoryName);
-            parametres.Add("@categoryStatus", kategori.CategoryStarus);
-            parametres.Add("@categoryID", kategori.CategoryID);
+            parametres.Add("@categoryName", category.CategoryName);
+            parametres.Add("@categoryStatus", category.CategoryStarus);
+            parametres.Add("@categoryID", category.CategoryID);
 
 
 
@@ -76,7 +76,7 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
         }
 
         // Tüm kategorileri getirir.
-        async Task<List<KaregoriSonuc>> KategoriDepo.GetAllCategoryAsync()
+        async Task<List<ResaultCategoryDto>> KategoriDepo.GetAllCategoryAsync()
         {
             // Kategorileri getirmek için kullanılacak SQL sorgusu.
             string query = "SELECT * FROM Category";
@@ -84,12 +84,12 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
             // Veritabanı bağlantısı oluşturulur ve sorgu çalıştırılır.
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryAsync<KaregoriSonuc>(query);
+                var values = await connection.QueryAsync<ResaultCategoryDto>(query);
                 return values.ToList();
             }
         }
 
-        public async Task<GetByIDKategori> GetCategory(int id)
+        public async Task<GetByIDCategoryDto> GetCategory(int id)
         {
 
             string query = "Select * From Category Where CategoryID=@categoryID";
@@ -101,9 +101,11 @@ namespace ViolaProject_Api.Dtos.CategoryRepository
             // Veritabanı bağlantısı oluşturulur ve sorgu çalıştırılır.
             using (var connection = _context.CreateConnection())
             {
-                var values = await connection.QueryFirstOrDefaultAsync<GetByIDKategori>(query , parametres);
+                var values = await connection.QueryFirstOrDefaultAsync<GetByIDCategoryDto>(query , parametres);
                 return values;
             }
         }
+
+       
     }
 }
